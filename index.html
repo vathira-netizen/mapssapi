@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <title>Google Maps Demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    /* full-height map container */
-    html, body { height: 100%; margin: 0; padding: 0; }
-    #map { height: 80vh; width: 100%; }
-    #info { padding: 10px; text-align: center; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      height: 80vh;
+      width: 100%;
+    }
+    #info {
+      text-align: center;
+      padding: 10px;
+    }
   </style>
 </head>
+
 <body>
-  <h2 style="text-align:center">Google Maps in GitHub Pages</h2>
+  <h2 style="text-align:center;">Google Maps – GitHub Demo</h2>
+
+  <!-- Map container -->
   <div id="map"></div>
+
   <div id="info">
-    <button id="loc-btn">Go to my location (browser)</button>
+    <button id="loc-btn">Go to my location</button>
   </div>
 
-  <!-- Load our script -->
+  <!-- Your JavaScript file -->
   <script src="script.js"></script>
 
-  <!-- Google Maps JS API: replace YOUR_API_KEY with your key -->
-  <script
-    async
-    defer
+  <!-- Google Maps API – replace YOUR_API_KEY -->
+  <script 
+    async 
+    defer 
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMZWQYYetS7XsK90J_mPK7D2BGfM8x-Wo&callback=initMap">
   </script>
 </body>
