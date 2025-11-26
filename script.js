@@ -1,37 +1,50 @@
 let map;
-function initMap() {
-  // Default center — change to any coords e.g., Bangalore
-  const defaultCenter = { lat: 12.9716, lng: 77.5946 };
 
+// MUST match callback name in HTML
+function initMap() {
+  // Default center (Bangalore). Replace with any location.
+  const defaultLocation = { lat: 12.9716, lng: 77.5946 };
+
+  // Create map
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 12,
-    center: defaultCenter,
+    center: defaultLocation,
   });
 
-  // Add a marker at the center
+  // Add marker
   new google.maps.Marker({
-    position: defaultCenter,
+    position: defaultLocation,
     map,
-    title: "Default location",
+    title: "Default Location",
   });
 
-  // Button to move to user's current location
+  // Button: go to user location
   const btn = document.getElementById("loc-btn");
+
   btn.addEventListener("click", () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const p = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-          map.setCenter(p);
-          map.setZoom(14);
-          new google.maps.Marker({ position: p, map, title: "You are here" });
+        (position) => {
+          const userPos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+
+          map.setCenter(userPos);
+          map.setZoom(15);
+
+          new google.maps.Marker({
+            position: userPos,
+            map,
+            title: "You are here",
+          });
         },
-        (err) => {
-          alert("Could not get location: " + err.message);
+        () => {
+          alert("Could not get your location.");
         }
       );
     } else {
-      alert("Geolocation not supported by this browser.");
+      alert("Geolocation not supported.");
     }
   });
 }
